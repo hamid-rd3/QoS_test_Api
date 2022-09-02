@@ -102,7 +102,7 @@ class QoS(models.Model):
         start = time.time()
         if algorithm == 'linear_search':
             hop_limit = hop_count_linear(hostname, test_hop, timeout)
-        elif algorithm == 'binary_search':
+        else:
             hop_limit = hop_count_binary(hostname, timeout)
         lines = os.popen(
             f"ping  {hostname} -c {count} ").readlines()

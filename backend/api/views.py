@@ -5,6 +5,15 @@ from products.serializer import QoSSerializer
 from products.models import QoS
 from time import time
 
+from rest_framework.permissions import AllowAny
+from .serializers import RegisterSerializer
+from rest_framework import generics
+
+
+class RegisterUserAPIView(generics.CreateAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer
+
 
 @api_view(["GET", "POST"])
 def api_home(request, *args, **kwargs):

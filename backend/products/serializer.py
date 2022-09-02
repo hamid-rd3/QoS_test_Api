@@ -11,6 +11,7 @@ class QoSSerializer(serializers.ModelSerializer):
     class Meta:
         model = QoS
         fields = [
+            "id",
             "site_url",
             "ping_count",
             "ping_timeout",
@@ -36,7 +37,7 @@ class QoSSerializer(serializers.ModelSerializer):
 
             event_loop = asyncio.new_event_loop()
             asyncio.set_event_loop(event_loop)
-            return(event_loop.run_until_complete(self.main_async(obj)))
+            return (event_loop.run_until_complete(self.main_async(obj)))
 
         else:
 

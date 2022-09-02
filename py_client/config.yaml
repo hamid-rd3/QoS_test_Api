@@ -1,0 +1,12 @@
+---
+#exampel for QoS input arguments
+
+site_url: https://khamenei.ir/
+ping_count : 5
+ping_timeout : 0.2
+ping_algorithm : binary_search
+ddosify_count : 100
+ddosify_duration : 5
+ddosify_timeout : 1
+async_view : True
+ 

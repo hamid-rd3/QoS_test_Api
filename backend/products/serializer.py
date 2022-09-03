@@ -4,6 +4,8 @@ from .models import QoS
 import asyncio
 
 
+
+
 class QoSSerializer(serializers.ModelSerializer):
 
     qos_parameters = serializers.SerializerMethodField(read_only=True)

@@ -16,6 +16,7 @@ import time
 
 
 class QoS(models.Model):
+
     site_url = models.CharField(max_length=120)
 
     ping_count = models.IntegerField(default=5)
@@ -105,7 +106,7 @@ class QoS(models.Model):
         else:
             hop_limit = hop_count_binary(hostname, timeout)
         lines = os.popen(
-            f"ping  {hostname} -c {count} ").readlines()
+            f"ping  {hostname} -c {count} -t {hop_limit} -W {timeout} ").readlines()
         count = lines[-2].split(' ')[0]
         packet_loss = lines[-2].split(' ')[5]
         min_rtt = lines[-1].split(' ')[3].split('/')[0]

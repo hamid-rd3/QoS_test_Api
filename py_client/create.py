@@ -6,7 +6,7 @@ auth_endpoint = "http://localhost:5201/api/auth/"
 password = getpass()
 
 auth_token = requests.post(
-    url=auth_endpoint, json={"username": "hamidrd11", "password": password})
+    url=auth_endpoint, json={"username": "hamid", "password": password})
 
 if auth_token.status_code == 200:
     token = auth_token.json()['token']

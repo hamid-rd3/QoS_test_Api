@@ -18,7 +18,7 @@ schema_view = swagger_get_schema_view(
 urlpatterns = [
     path('', views.api_home),
     path('auth/', obtain_auth_token),
-    path('register', views.RegisterUserAPIView.as_view()),
+    path('register/', views.RegisterUserAPIView.as_view()),
     path('swagger-json/', schema_view.without_ui(
         cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger',

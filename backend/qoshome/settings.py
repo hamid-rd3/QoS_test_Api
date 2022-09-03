@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'api',
     'products',
     'drf_yasg',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -154,10 +155,10 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-        'api.authentication.TokenAuthentication',
-    ],
+    ),
 
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
@@ -173,7 +174,7 @@ REST_FRAMEWORK = {
     },
 
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "PAGE_SIZE": 2,
+    "PAGE_SIZE": 1,
 
 }
 
@@ -192,6 +193,8 @@ SWAGGER_SETTINGS = {
             },
         },
     },
+    # "DEFAULT_MODEL_RENDERING": "example",
+    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
     'USE_TOKEN_AUTH': True,
     'USE_SESSION_AUTH': True,
 

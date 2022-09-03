@@ -36,7 +36,7 @@ more Information about Selenium and How To Measure Page Load Times  :
   
 How to use ping command to extract packet loss jitter and latency :
 
-  "https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/ping"
+  "https://linux.die.net/man/8/ping"
   
 source code and a guide to ddosify :
 

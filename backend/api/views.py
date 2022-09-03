@@ -8,6 +8,7 @@ from time import time
 from rest_framework.permissions import AllowAny
 from .serializers import RegisterSerializer
 from rest_framework import generics
+from drf_yasg.utils import swagger_auto_schema
 
 
 class RegisterUserAPIView(generics.CreateAPIView):
@@ -15,7 +16,8 @@ class RegisterUserAPIView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 
-@api_view(["GET", "POST"])
+@swagger_auto_schema(method='get', operation_description="last site qos parameters been created  ", operation_summary="get qos params ")
+@api_view(["GET"])
 def api_home(request, *args, **kwargs):
     start = time()
     instance = QoS.objects.all().last()

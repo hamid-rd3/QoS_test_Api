@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'api',
     'products',
-    'drf_yasg',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
     'accounts',
 ]
 
@@ -156,8 +157,8 @@ LOGOUT_REDIRECT_URL = "/"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'api.authentication.TokenAuthentication',
     ),
 
     'DEFAULT_PERMISSION_CLASSES': [
@@ -175,30 +176,40 @@ REST_FRAMEWORK = {
 
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 1,
-
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
-
-SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header',
-            'authorizationUrl': 'http://localhost:5201/admin/',
-            'tokenUrl': 'http://localhost:5201/api/auth/',
-            'flow': 'accessCode',
-            'scopes': {
-                'read:groups': 'read groups',
-            },
-        },
-    },
-    # "DEFAULT_MODEL_RENDERING": "example",
-    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
-    'USE_TOKEN_AUTH': True,
-    'USE_SESSION_AUTH': True,
-
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'QoS test api ',
+    'DESCRIPTION': 'quality of service measurement tool using ping,curl,selenium chrome driver and ddosify to extract some parameters such as latency,page load timing,jitter,throughput,hopcount ...   ',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': True,
+    'SWAGGER_UI_DIST': 'SIDECAR',
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    'AUTHENTICATION_WHITELIST': ['api.authentication.TokenAuthentication']
 }
-REDOC_SETTINGS = {
-    'LAZY_RENDERING': False,
-}
+
+# SWAGGER_SETTINGS = {
+#     'SECURITY_DEFINITIONS': {
+#         'Bearer': {
+#             'type': 'apiKey',
+#             'name': 'Authorization',
+#             'in': 'header',
+#             'authorizationUrl': 'http://localhost:5201/admin/',
+#             'tokenUrl': 'http://localhost:5201/api/auth/',
+#             'flow': 'accessCode',
+#             'scopes': {
+#                 'read:groups': 'read groups',
+#             },
+#         },
+#     },
+#     # "DEFAULT_MODEL_RENDERING": "example",
+#     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
+#     'USE_TOKEN_AUTH': True,
+#     'USE_SESSION_AUTH': True,
+
+# }
+# REDOC_SETTINGS = {
+#     'LAZY_RENDERING': False,
+# }

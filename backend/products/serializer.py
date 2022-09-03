@@ -24,16 +24,6 @@ class QoSSerializer(serializers.ModelSerializer):
             "async_view",
             "qos_parameters",
         ]
-        # example = {
-        #     'site_url': 'https://www.varzesh3.com/',
-        #     'ping_count': 5,
-        #     'ping_timeout': 0.2,
-        #     'ping_algorithm': 'binary_search',
-        #     'ddosify_count': 100,
-        #     'ddosify_duration': 5,
-        #     'ddosify_timeout': 1,
-        #     'async_view': True
-        # }
 
     log_keys = ["ping_resault", "selenium_resault",
                 "curl_resault", "ddosify_resault"]

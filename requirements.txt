@@ -4,4 +4,5 @@ pyyaml
 requests
 django-cors-headers
 selenium
-drf_yasg
+drf-spectacular
+drf-spectacular[sidecar]

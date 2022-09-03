@@ -11,7 +11,6 @@ class QoSDetailView(generics.RetrieveAPIView):
     serializer_class = QoSSerializer
     lookup_field = 'pk'
 
-    @swagger_auto_schema(operation_description="qos parameters of specified id ", operation_summary="get id qos params ", responces={200: responce_schema_dict})
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 
@@ -24,11 +23,9 @@ class QoSListCreateView(generics.ListCreateAPIView):
     queryset = QoS.objects.all()
     serializer_class = QoSSerializer
 
-    @swagger_auto_schema(operation_summary="qos parameters of all ids ", operation_description="get list of all id qos params paginated ", responses={200: responce_schema_dict})
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 
-    @swagger_auto_schema(operation_summary="extract qos parameters of a site  ", operation_discription="test qos of a new website url and create object with specified id  ", request_body=request_schema_dict, responses={200: responce_schema_dict})
     def post(self, request, *args, **kwargs):
         return super().post(request, *args, **kwargs)
 
@@ -41,11 +38,10 @@ class QoSUpdateView(generics.UpdateAPIView):
     serializer_class = QoSSerializer
     lookup_field = 'pk'
 
-    @ swagger_auto_schema(operation_summary="change allarguments of a existed id  ", operation_discription="remove the previous version and give new arguments to a specified id", request_body=request_schema_dict, responses={200: responce_schema_dict})
+    # @ swagger_auto_schema(operation_summary="change allarguments of a existed id  ", operation_discription="remove the previous version and give new arguments to a specified id", request_body=request_schema_dict, responses={200: responce_schema_dict})
     def put(self, request, *args, **kwargs):
         return super().put(request, *args, **kwargs)
 
-    @ swagger_auto_schema(operation_summary="change only declared arguments  ", operation_discription="change the declared property for a specified id", request_body=request_schema_dict, responses={200: responce_schema_dict})
     def patch(self, request, *args, **kwargs):
         return super().patch(request, *args, **kwargs)
 
@@ -58,7 +54,6 @@ class QoSDeleteView(generics.DestroyAPIView):
     serializer_class = QoSSerializer
     lookup_field = 'pk'
 
-    @ swagger_auto_schema(operation_summary="complete remove id object", operation_discription="remove all stuff of specified id and set not found to it but id remains by itself", responses={204: 'onject deleted successfully'})
     def delete(self, request, *args, **kwargs):
         return super().delete(request, *args, **kwargs)
 

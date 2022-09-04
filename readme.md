@@ -13,9 +13,9 @@ In this repo I create a REST API and implement some qos tests to measure quality
 
 - [More about QoS parameters](#More-about-QoS-parameters)
 - [Beginner Installation](#Beginner-Installation)
--  [Create your virtual environment](#Create-your-virtual-environment)
--  [Add an Admin to the Server](#Add-an-Admin-to-the-Server)
--  [Launch the api](#Launch-the-api)
+-   [Create your virtual environment](#Create-your-virtual-environment)
+-   [Add an admin user](#Add-an-admin-user)
+-   [Launch the api](#Launch-the-api)
 - [Swagger redoc](#Swagger-redoc)
 
 <!-- tocstop -->
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 chmod +x install_required.sh
 ./install_required.sh
 ```
-### Add an Admin to the Server
+### Add an admin user
 
 
 **Admin and create QoS objects**
@@ -124,6 +124,8 @@ url patterns :
 12 api/products/ <int:pk>/delete/
 ```
 
+![image](https://user-images.githubusercontent.com/87657199/188329748-3df93789-fac2-47f9-98b4-ec84237e62d1.png)
+
 
 ## Swagger redoc
 
@@ -133,7 +135,7 @@ if server is running you can see the swagger redoc document below
 
 offline redoc document
 
-[QoS API.pdf](https://github.com/hamid-rd3/QoS_test_Api/files/9485253/QoS.API.pdf)
+[QoS API Doc.pdf](https://github.com/hamid-rd3/QoS_test_Api/files/9485327/QoS.API.Doc.pdf)
 
 
 Good Luck 👍

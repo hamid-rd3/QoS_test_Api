@@ -193,7 +193,6 @@ SWAGGER_SETTINGS = {
         },
     },
     # "DEFAULT_MODEL_RENDERING": "example",
-    'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
     'USE_TOKEN_AUTH': True,
     'USE_SESSION_AUTH': False,
     # 'OPERATIONS_SORTER': None,

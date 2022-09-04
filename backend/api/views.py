@@ -20,7 +20,7 @@ from .authentication import TokenAuthentication
 
 class ObtainAuthTokenAPIView(ObtainAuthToken):
     serializer_class = AuthTokenSerializer
-    parser_classes = [JSONParser, MultiPartParser]
+    parser_classes = [MultiPartParser]
 
     @swagger_auto_schema(operation_summary="Bearer Token ", responses={200: 'authenticated, Bearer token is here ! '})
     def post(self, request, *args, **kwargs):

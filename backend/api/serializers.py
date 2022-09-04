@@ -1,11 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from rest_framework.response import Response
-from rest_framework import status
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth.hashers import make_password
-# Serializer to Get User Details using Django Token Authentication
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -26,6 +22,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         style={'input_type': 'password', 'placeholder': 'Password'})
     password2 = serializers.CharField(write_only=True, required=True,
                                       style={'input_type': 'password', 'placeholder': 'Password'})
+
     class Meta:
         model = User
         fields = ('username', 'password', 'password2',

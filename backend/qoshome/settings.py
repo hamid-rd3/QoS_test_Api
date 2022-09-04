@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'api',
     'products',
     'drf_yasg',
-    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -156,7 +155,7 @@ LOGOUT_REDIRECT_URL = "/"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
+        'api.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
 
@@ -196,8 +195,7 @@ SWAGGER_SETTINGS = {
     # "DEFAULT_MODEL_RENDERING": "example",
     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
     'USE_TOKEN_AUTH': True,
-    'USE_SESSION_AUTH': True,
-
+    'USE_SESSION_AUTH': False,
 }
 REDOC_SETTINGS = {
     'LAZY_RENDERING': False,

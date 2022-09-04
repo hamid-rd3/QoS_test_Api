@@ -84,7 +84,7 @@ responce_schema_dict = openapi.Response(
                     "unloadEventEnd": 0,
                     "unloadEventStart": 0,
                     "workerStart": 0
-            },
+                    },
             "curl_resault": {
                     "connect": 0.09,
                     "appconnect": 0.19,
@@ -92,7 +92,7 @@ responce_schema_dict = openapi.Response(
                     "redirect": 0,
                     "start_transfer": 0.19,
                     "total": 0.2
-            },
+                    },
             "ddosify_resault": {
                     "success_perc": 100,
                     "fail_perc": 0,
@@ -121,7 +121,7 @@ responce_schema_dict = openapi.Response(
                             "fail_perc": 0
                         }
                     }
-            }
+                    }
         }
     }}
 )

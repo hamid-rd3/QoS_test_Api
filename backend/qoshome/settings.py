@@ -184,8 +184,8 @@ SWAGGER_SETTINGS = {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header',
-            'authorizationUrl': 'http://localhost:5201/admin/',
-            'tokenUrl': 'http://localhost:5201/api/auth/',
+            'authorizationUrl': 'http://185.130.78.174:5201:5201/admin/',
+            'tokenUrl': 'http://185.130.78.174:5201:5201/api/auth/',
             'flow': 'accessCode',
             'scopes': {
                 'read:groups': 'read groups',
@@ -196,6 +196,7 @@ SWAGGER_SETTINGS = {
     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
     'USE_TOKEN_AUTH': True,
     'USE_SESSION_AUTH': False,
+    # 'OPERATIONS_SORTER': None,
 }
 REDOC_SETTINGS = {
     'LAZY_RENDERING': False,

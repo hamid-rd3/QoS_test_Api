@@ -8,12 +8,14 @@ from .views import UserDetailAPI, RegisterUserAPIView
 
 schema_view = swagger_get_schema_view(
     openapi.Info(
+
         title="QoS API",
         default_version='1.0.0',
         description="quality of service measurement tool using ping,curl,selenium chrome driver and ddosify to extract some parameters such as latency,page load timing,jitter,throughput,hopcount ...",
         contact=openapi.Contact(
             email="h.dashtabadi@gmail.com"),
         terms_of_service="https://www.google.com/policies/terms/",
+
     ),
     public=True,
     permission_classes=[permissions.AllowAny],
@@ -30,5 +32,5 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc',
          cache_timeout=0), name='schema-redoc'),
     path("get-details", UserDetailAPI.as_view()),
-    path('register', RegisterUserAPIView.as_view()),
+    path('api-register', RegisterUserAPIView.as_view()),
 ]

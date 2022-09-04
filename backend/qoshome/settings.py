@@ -155,21 +155,21 @@ LOGOUT_REDIRECT_URL = "/"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'api.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
 
-    'DEFAULT_PERMISSION_CLASSES': [
-    ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
 
-    'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.AnonRateThrottle',
-        'rest_framework.throttling.UserRateThrottle'
-    ],
-    'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',
-        'user': '10000/day'
-    },
+    # 'DEFAULT_THROTTLE_CLASSES': [
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle'
+    # ],
+    # 'DEFAULT_THROTTLE_RATES': {
+    #     'anon': '100/day',
+    #     'user': '10000/day'
+    # },
 
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 1,
@@ -178,22 +178,22 @@ REST_FRAMEWORK = {
 
 
 SWAGGER_SETTINGS = {
-    'SECURITY_DEFINITIONS': {
-        'Bearer': {
-            'type': 'apiKey',
-            'name': 'Authorization',
-            'in': 'header',
-            'authorizationUrl': 'http://185.130.78.174:5201:5201/admin/',
-            'tokenUrl': 'http://185.130.78.174:5201:5201/api/auth/',
-            'flow': 'accessCode',
-            'scopes': {
-                'read:groups': 'read groups',
-            },
-        },
-    },
+    # 'SECURITY_DEFINITIONS': {
+    #     'Bearer': {
+    #         'type': 'apiKey',
+    #         'name': 'Authorization',
+    #         'in': 'header',
+    #         'authorizationUrl': 'http://185.130.78.174:5201:5201/admin/',
+    #         'tokenUrl': 'http://185.130.78.174:5201:5201/api/auth/',
+    #         'flow': 'accessCode',
+    #         'scopes': {
+    #             'read:groups': 'read groups',
+    #         },
+    #     },
+    # },
     # "DEFAULT_MODEL_RENDERING": "example",
     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
-    'USE_TOKEN_AUTH': True,
+    'USE_TOKEN_AUTH': False,
     'USE_SESSION_AUTH': False,
     # 'OPERATIONS_SORTER': None,
 }

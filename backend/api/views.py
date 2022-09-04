@@ -31,7 +31,7 @@ obtain_auth_token_api = ObtainAuthTokenAPIView.as_view()
 
 
 class UserDetailAPI(APIView):
-    authentication_classes = (TokenAuthentication,)
+    
     permission_classes = (AllowAny,)
 
     @swagger_auto_schema(operation_summary="user detail", operation_description="token authentication needed")

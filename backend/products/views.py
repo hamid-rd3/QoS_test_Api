@@ -2,9 +2,6 @@
 from rest_framework import generics
 from .models import QoS
 from .serializer import QoSSerializer
-from drf_yasg.utils import swagger_auto_schema
-from .examples import request_schema_dict, responce_schema_dict
-from drf_spectacular.authentication import TokenScheme
 
 
 class QoSDetailView(generics.RetrieveAPIView):
@@ -39,7 +36,7 @@ class QoSUpdateView(generics.UpdateAPIView):
     serializer_class = QoSSerializer
     lookup_field = 'pk'
 
-    # @ swagger_auto_schema(operation_summary="change allarguments of a existed id  ", operation_discription="remove the previous version and give new arguments to a specified id", request_body=request_schema_dict, responses={200: responce_schema_dict})
+
     def put(self, request, *args, **kwargs):
         return super().put(request, *args, **kwargs)
 

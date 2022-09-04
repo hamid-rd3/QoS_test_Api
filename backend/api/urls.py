@@ -24,13 +24,10 @@ schema_view = swagger_get_schema_view(
 
 urlpatterns = [
     path('', views.api_home),
-    path('auth/', views.obtain_auth_token_api),
     path('swagger-json/', schema_view.without_ui(
         cache_timeout=0), name='schema-json'),
     path('swagger/', schema_view.with_ui('swagger',
          cache_timeout=0), name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc',
          cache_timeout=0), name='schema-redoc'),
-    path("get-details", UserDetailAPI.as_view()),
-    path('api-register', RegisterUserAPIView.as_view()),
 ]

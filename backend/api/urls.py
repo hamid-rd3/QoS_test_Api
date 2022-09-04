@@ -9,7 +9,6 @@ from .views import UserDetailAPI, RegisterUserAPIView
 schema_view = swagger_get_schema_view(
     openapi.Info(
         title="QoS API",
-        url="http://185.130.78.174:5201/api/swagger/",
         default_version='1.0.0',
         description="quality of service measurement tool using ping,curl,selenium chrome driver and ddosify to extract some parameters such as latency,page load timing,jitter,throughput,hopcount ...",
         contact=openapi.Contact(

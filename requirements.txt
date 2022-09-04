@@ -5,3 +5,4 @@ requests
 django-cors-headers
 selenium
 drf_yasg
+requests_toolbelt

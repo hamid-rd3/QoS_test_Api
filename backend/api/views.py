@@ -8,7 +8,7 @@ from rest_framework.authtoken.serializers import AuthTokenSerializer
 from drf_yasg.utils import swagger_auto_schema
 from products.examples import responce_schema_dict, register_responce
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.parsers import MultiPartParser
+from rest_framework.parsers import MultiPartParser, JSONParser
 
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView

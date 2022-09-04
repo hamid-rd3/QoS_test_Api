@@ -21,7 +21,7 @@ class QoS(models.Model):
 
     ping_count = models.IntegerField(default=5)
     ping_timeout = models.DecimalField(
-        max_digits=2, decimal_places=2, default=0.2)
+        max_digits=3, decimal_places=2, default=0.2)
     ping_algorithm = models.CharField(default='binary_search', max_length=13)
 
     ddosify_count = models.IntegerField(default=100)
@@ -148,10 +148,10 @@ def hop_count_binary(hostname, timeout):
             ['ping', hostname, '-c 1', f'-t {hop_limit}', f'-W {timeout}'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         if responce.returncode:
             if i == 4:
-                hop_limit += 2
+                hop_limit += 1
             hop_limit += step
         else:
             hop_limit -= step
         step = int(step/2)
-        return hop_limit
+    return hop_limit
 # Create your models here.

@@ -184,7 +184,7 @@ SWAGGER_SETTINGS = {
             'type': 'apiKey',
             'name': 'Authorization',
             'in': 'header',
-            'authorizationUrl': 'http://185.130.78.174:5201:5201/admin/',
+            'authorizationUrl': 'http://185.130.78.174:5201:5201/api/products/',
             'tokenUrl': 'http://185.130.78.174:5201:5201/api/auth/',
             'flow': 'accessCode',
             'scopes': {

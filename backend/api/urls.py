@@ -18,7 +18,7 @@ schema_view = swagger_get_schema_view(
 
     ),
     public=True,
-    permission_classes=[permissions.AllowAny],
+    permission_classes=[permissions.IsAuthenticatedOrReadOnly],
 
 )
 

@@ -4,6 +4,7 @@ from .models import QoS
 from .serializer import QoSSerializer
 from drf_yasg.utils import swagger_auto_schema
 from .examples import request_schema_dict, responce_schema_dict
+from drf_spectacular.authentication import TokenScheme
 
 
 class QoSDetailView(generics.RetrieveAPIView):

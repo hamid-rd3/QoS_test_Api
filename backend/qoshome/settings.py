@@ -187,29 +187,5 @@ SPECTACULAR_SETTINGS = {
     'SWAGGER_UI_DIST': 'SIDECAR',
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
-    'AUTHENTICATION_WHITELIST': None,
+    'AUTHENTICATION_WHITELIST': ['api.authentication.TokenAuthentication'],
 }
-
-# SWAGGER_SETTINGS = {
-#     'SECURITY_DEFINITIONS': {
-#         'Bearer': {
-#             'type': 'apiKey',
-#             'name': 'Authorization',
-#             'in': 'header',
-#             'authorizationUrl': 'http://localhost:5201/admin/',
-#             'tokenUrl': 'http://localhost:5201/api/auth/',
-#             'flow': 'accessCode',
-#             'scopes': {
-#                 'read:groups': 'read groups',
-#             },
-#         },
-#     },
-#     # "DEFAULT_MODEL_RENDERING": "example",
-#     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg_examples.SwaggerAutoSchema',
-#     'USE_TOKEN_AUTH': True,
-#     'USE_SESSION_AUTH': True,
-
-# }
-# REDOC_SETTINGS = {
-#     'LAZY_RENDERING': False,
-# }

@@ -13,10 +13,10 @@ In this repo I create a REST API and implement some qos tests to measure quality
 
 - [More about QoS parameters](#More-about-QoS-parameters)
 - [Beginner Installation](#Beginner-Installation)
--   [Create your virtual environment](#Create-your-virtual-environment)
--   [Add an Admin to the Server](#Add-an-Admin-to-the-Server)
--   [Launch the api](#Launch-the-api)
-
+-  [Create your virtual environment](#Create-your-virtual-environment)
+-  [Add an Admin to the Server](#Add-an-Admin-to-the-Server)
+-  [Launch the api](#Launch-the-api)
+- [Swagger redoc](#Swagger-redoc)
 
 <!-- tocstop -->
 
@@ -105,7 +105,36 @@ cd py_client
 python create.py
 
 ```
-you can also check rest_framework views in the web browser 
+you can open your browser to see the views 
+
+url patterns :
+```bash
+#http://localhost:8000/ +
+1 admin/
+2 api/
+3 api/ auth/
+4 api/ swagger-json/ [name='schema-json']
+5 api/ swagger/ [name='schema-swagger-ui']
+6 api/ redoc/ [name='schema-redoc']
+7 api/ get-details
+8 api/ api-register
+9 api/products/ <int:pk>/
+10 api/products/
+11 api/products/ <int:pk>/update/
+12 api/products/ <int:pk>/delete/
+```
+
+
+## Swagger redoc
+
+if server is running you can see the swagger redoc document below 
+
+" http://185.130.78.174:5201/api/redoc/ "
+
+offline redoc document
+
+[QoS API.pdf](https://github.com/hamid-rd3/QoS_test_Api/files/9485253/QoS.API.pdf)
+
 
 Good Luck 👍
 

@@ -24,7 +24,7 @@ class QoSListCreateView(generics.ListCreateAPIView):
     queryset = QoS.objects.all()
     serializer_class = QoSSerializer
 
-    @swagger_auto_schema(operation_summary="qos parameters of all ids ", operation_description="get list of all id qos params paginated ", responses={200: responce_schema_dict})
+    @swagger_auto_schema(operation_summary="qos parameters of all ids ", operation_description="get paginated list of all id qos params  ", responses={200: responce_schema_dict})
     def get(self, request, *args, **kwargs):
         return super().get(request, *args, **kwargs)
 

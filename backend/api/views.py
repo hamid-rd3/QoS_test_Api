@@ -9,7 +9,7 @@ from drf_yasg.utils import swagger_auto_schema
 from products.examples import responce_schema_dict, register_responce
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.parsers import MultiPartParser
-
+from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from .serializers import UserSerializer, RegisterSerializer
@@ -48,6 +48,7 @@ class RegisterUserAPIView(generics.CreateAPIView):
     parser_classes = [MultiPartParser]
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+    authentication_classes = (BasicAuthentication,)
 
     @swagger_auto_schema(operation_description="email and username myst be unique ", operation_summary="register user ", responses={200: register_responce})
     def post(self, request, *args, **kwargs):

@@ -8,8 +8,10 @@ sudo apt update && sudo apt upgrade -y
 echo "Install prerequisite packages..."
 sudo apt install wget curl unzip -y
 
-"install ddosift"
-curl -sSfL https://raw.githubusercontent.com/ddosify/ddosify/master/scripts/install.sh | sh
+echo "install ddosify"
+wget https://github.com/ddosify/ddosify/releases/latest/download/ddosify_amd64.deb
+sudo dpkg -i ddosify_amd64.deb
+
 
 echo "Download the latest Chrome .deb file..."
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb

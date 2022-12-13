@@ -37,7 +37,8 @@ class QoS(models.Model):
         chrome_options.add_argument("--no-sandbox")
 
         path_parent = os. path. dirname(os. getcwd())  # backend
-        path = os.path.join(os.getcwd(), 'chromedriver/stable/chromedriver')
+        path = os.path.join(
+            os.getcwd(), 'chromedriver/stable/chromedriver')
         os.chmod(path, stat.S_IXUSR)
         web_driver_service = Service(executable_path=path)
 
@@ -62,8 +63,8 @@ class QoS(models.Model):
         print("get_curl is started")
         url = self.site_url
         command = " --write-out \
-            'connect %{time_connect}\nappconnect %{time_appconnect}\npretransfer %{time_pretransfer}\nredirect %{time_redirect}\nstart_transfer %{time_starttransfer}\ntotal %{time_total}'\
-                --silent --show-error "
+        'connect %{time_connect}\nappconnect %{time_appconnect}\npretransfer %{time_pretransfer}\nredirect %{time_redirect}\nstart_transfer %{time_starttransfer}\ntotal %{time_total}'\
+            --connect-timeout 2 --silent --show-error "
         lines = os.popen(f"curl {url}"+command).readlines()
         logdict = {
             'connect': round(float(lines[-6].split(' ')[1]), 2),
@@ -119,39 +120,36 @@ class QoS(models.Model):
 
         return log_dict
 
+    def hop_count_linear(hostname, test_hop, timeout):
+    # """ With a TTL value of less than hop count, ping gives a 
+    # “Time to live exceeded” message as well as a 100% packet loss in the 
+    # statistics(responce.returncode is 1). 
+    # This means that the hop count needs to be increased linearly towards the destination """
+        while True:
+            # the first goal is to find hop counts so count =1 to ping faster
+            responce = subprocess.run(['ping', hostname, '-c 1', f'-t {test_hop}', f'-W {timeout}'], stdout=subprocess.DEVNULL,
+                                    stderr=subprocess.STDOUT)
+            if responce.returncode == 1:
+                test_hop += 1
+                continue
+            break
+        return test_hop
 
-# initial functions
-
-
-def hop_count_linear(hostname, test_hop, timeout):
-    """ With a TTL value of less than hop count, ping gives a “Time to live exceeded” message as well as a 100% packet loss in the statistics(responce.returncode is 1). This means that the hop count needs to be increased linearly towards the destination """
-
-    while True:
-        # the first goal is to find hop counts so count =1 to ping faster
-        responce = subprocess.run(['ping', hostname, '-c 1', f'-t {test_hop}', f'-W {timeout}'], stdout=subprocess.DEVNULL,
-                                  stderr=subprocess.STDOUT)
-        if responce.returncode == 1:
-            test_hop += 1
-            continue
-        break
-    return test_hop
-
-
-def hop_count_binary(hostname, timeout):
-    """ If ttl is less than hop count , responce.returncode gives 1 and it must minus step and on the other hand If ttl is more than hop count responce.returncode gives 0 and i must plus step to get nearer to the answer 
-    """
-    max_root = 32
-    step = int(max_root/4)
-    hop_limit = int(max_root/2)
-    for i in range(1, 5):
-        responce = subprocess.run(
-            ['ping', hostname, '-c 1', f'-t {hop_limit}', f'-W {timeout}'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-        if responce.returncode:
-            if i == 4:
-                hop_limit += 1
-            hop_limit += step
-        else:
-            hop_limit -= step
-        step = int(step/2)
-    return hop_limit
-# Create your models here.
+    def hop_count_binary(hostname, timeout):
+    # """ If ttl is less than hop count , responce.returncode gives 1 and it must minus step and on the other hand If ttl is more than hop count responce.returncode gives 0 and i must plus step to get nearer to the answer 
+    # """
+        max_root = 32
+        step = int(max_root/4)
+        hop_limit = int(max_root/2)
+        for i in range(1, 5):
+            responce = subprocess.run(
+                ['ping', hostname, '-c 1', f'-t {hop_limit}', f'-W {timeout}'], stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+            if responce.returncode:
+                if i == 4:
+                    hop_limit += 1
+                hop_limit += step
+            else:
+                hop_limit -= step
+            step = int(step/2)
+            return hop_limit
+        # Create your models here.

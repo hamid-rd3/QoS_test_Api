@@ -4,7 +4,7 @@ from getpass import getpass
 import yaml
 from requests_toolbelt.multipart.encoder import MultipartEncoder
 
-auth_endpoint = "http://localhost:5201/api/auth/"
+auth_endpoint = "http://localhost:8000/api/auth/"
 password = getpass()
 
 mp_encoder = MultipartEncoder({"username": "hamid", "password": password})
@@ -19,12 +19,20 @@ if auth_token.status_code == 200:
     }
 else:
     raise exception("password is wrong ")
-endpoint = "http://localhost:5201/api/products/"
+endpoint = "http://localhost:8000/api/products/"
 
-with open('config.yaml', 'r') as config:
+# with open('config.yaml', 'r') as config:
 
-    data = yaml.full_load(config)
+#     data = yaml.full_load(config)
 
-get_responce = requests.post(url=endpoint, headers=headers, json=data)
+get_responce = requests.post(url=endpoint, headers=headers, json={
+"site_url": "https://www.varzesh3.com/",
+"ping_count" : 5,
+"ping_timeout" : 0.2,
+"ping_algorithm" : "binary_search",
+"ddosify_count" : 100,
+"ddosify_duration" : 5,
+"ddosify_timeout" : 1,
+"async_view" : True})
 
 print(get_responce.status_code, get_responce.json())
